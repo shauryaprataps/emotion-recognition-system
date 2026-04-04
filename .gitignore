@@ -1,0 +1,15 @@
+backend/.venv/
+backend/database/*.db
+backend/**/__pycache__/
+frontend/node_modules/
+frontend/dist/
+backend/wav2vec2_checkpoints/
+backend/saved_models/
+*.pyc
+*.ckpt
+*.h5
+*.pt
+*.pth
+*.onnx
+.env
+.cache/
