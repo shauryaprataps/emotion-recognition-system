@@ -7,27 +7,30 @@ from sqlalchemy.orm import Session
 
 from app.models.schemas import OptionalModalityResult, PredictResponse, Ratings, ReportSummary
 from app.services.db_service import create_session, get_db, get_or_create_settings
-from app.services.face_service import FaceEmotionService
 from app.services.fusion_service import fuse_modalities
 from app.services.report_service import build_interpretation, build_report_text, compute_ratings
-from app.services.text_service import TextEmotionService
-from app.services.voice_service import VoiceEmotionService
 
 router = APIRouter(prefix="/predict", tags=["predict"])
 
 
 @lru_cache
-def get_face_service() -> FaceEmotionService:
+def get_face_service():
+    from app.services.face_service import FaceEmotionService
+
     return FaceEmotionService()
 
 
 @lru_cache
-def get_voice_service() -> VoiceEmotionService:
+def get_voice_service():
+    from app.services.voice_service import VoiceEmotionService
+
     return VoiceEmotionService()
 
 
 @lru_cache
-def get_text_service() -> TextEmotionService:
+def get_text_service():
+    from app.services.text_service import TextEmotionService
+
     return TextEmotionService()
 
 
