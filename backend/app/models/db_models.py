@@ -1,4 +1,5 @@
 from datetime import datetime
+from pathlib import Path
 
 from sqlalchemy import JSON, DateTime, Float, Integer, String, Text, create_engine
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, sessionmaker
@@ -41,6 +42,13 @@ class AppSettings(Base):
 
 
 settings = get_settings()
+if settings.database_url.startswith("sqlite:///"):
+    sqlite_path = settings.database_url.removeprefix("sqlite:///")
+    db_file = Path(sqlite_path)
+    if not db_file.is_absolute():
+        db_file = (Path.cwd() / db_file).resolve()
+    db_file.parent.mkdir(parents=True, exist_ok=True)
+
 engine = create_engine(settings.database_url, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
