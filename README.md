@@ -29,11 +29,7 @@ Copy-Item .env.example .env
 npm run dev
 ```
 
-## Pretrained Models
 
-- Face: FER emotion analysis with OpenCV-based detection
-- Voice: `speechbrain/emotion-recognition-wav2vec2-IEMOCAP`
-- Text: `j-hartmann/emotion-english-distilroberta-base`
 
 The first backend run downloads model weights automatically.
 
