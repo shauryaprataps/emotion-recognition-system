@@ -77,7 +77,4 @@ The first backend run downloads model weights automatically.
 - Add checkpoints under `backend/saved_models/`
 - Update service loading logic in `backend/app/services/`
 
-## Pretrained Vs Custom Logic
 
-- Pretrained: FER, SpeechBrain wav2vec2, HuggingFace DistilRoBERTa
-- Custom: preprocessing, label mapping, weighted fusion, ratings, report generation, persistence
